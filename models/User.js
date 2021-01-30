@@ -71,6 +71,19 @@ userSchema.methods.generateToken = function (callback) {
   });
 };
 
+userSchema.methods.findByToken = function (token, callback) {
+  var user = this;
+
+  // 토큰을 decode한다.
+  jwt.verify(token, "secretToken", function (err, decoded) {
+    // 사용자 ID를 이용해서 사용자를 찾은 후, 클라이언트에서 가져온 token과 DB에 저장된 token이 일치하는지 확인한다.
+    user.findOne({ _id: decoded, token: token }, function (err, user) {
+      if (err) return callback(err);
+      callback(null, user);
+    });
+  });
+};
+
 const User = mongoose.model("User", userSchema);
 
 module.exports = { User };
