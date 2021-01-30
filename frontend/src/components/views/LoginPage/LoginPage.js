@@ -17,8 +17,8 @@ const formStyle = {
 
 function LoginPage(props) {
   const dispatch = useDispatch();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [Email, setEmail] = useState("");
+  const [Password, setPassword] = useState("");
 
   const onEmailChangeHandler = (event) => {
     setEmail(event.currentTarget.value);
@@ -30,8 +30,8 @@ function LoginPage(props) {
     event.preventDefault();
 
     let loginForm = {
-      email,
-      password
+      email: Email,
+      password: Password
     };
 
     dispatch(loginUser(loginForm)).then((response) => {
@@ -47,11 +47,11 @@ function LoginPage(props) {
     <div style={style}>
       <form style={formStyle} onSubmit={onSubmitHandler}>
         <label>E-mail</label>
-        <input type="email" value={email} onChange={onEmailChangeHandler} />
+        <input type="email" value={Email} onChange={onEmailChangeHandler} />
         <label>Password</label>
         <input
           type="password"
-          value={password}
+          value={Password}
           onChange={onPasswordChangeHandler}
         />
         <button>Login</button>
