@@ -1,6 +1,5 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import axios from "axios";
 import styled from "styled-components";
 
 const SLayout = styled.div`
@@ -12,23 +11,10 @@ const SLayout = styled.div`
   height: 100vh;
 `;
 
-function LandingPage(props) {
-  const onLogoutClickHandler = () => {
-    try {
-      const response = axios.get("/api/users/logout");
-
-      if (response.data.success) {
-        props.history.push("/login");
-      }
-    } catch (e) {
-      alert("로그아웃이 실패했습니다.");
-    }
-  };
-
+function LandingPage() {
   return (
     <SLayout>
       <h2>시작 페이지</h2>
-      <button onClick={onLogoutClickHandler}>로그아웃</button>
     </SLayout>
   );
 }

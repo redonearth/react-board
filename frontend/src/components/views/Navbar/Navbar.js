@@ -1,6 +1,9 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
+import { USER_SERVER } from "../../../Config";
+import axios from "axios";
 
 const Nav = styled.nav`
   color: white;
@@ -36,18 +39,43 @@ const SLink = styled(Link)`
   justify-content: center;
 `;
 
-export default withRouter(({ location: { pathname } }) => (
-  <Nav>
-    <List>
-      <Item current={pathname === "/"}>
-        <SLink to="/">Home</SLink>
-      </Item>
-      <Item current={pathname === "/login"}>
-        <SLink to="/login">Login</SLink>
-      </Item>
-      <Item current={pathname === "/register"}>
-        <SLink to="/register">Register</SLink>
-      </Item>
-    </List>
-  </Nav>
-));
+function Navbar({ props, location: { pathname } }) {
+  const user = useSelector((state) => state.user);
+
+  const logoutHandler = () => {
+    try {
+      const response = axios.get(`${USER_SERVER}/logout`);
+      if (response.data.success) {
+        props.history.push("/login");
+      }
+    } catch {
+      alert("로그아웃 에러가 발생했습니다.");
+    }
+  };
+
+  return (
+    <Nav>
+      <List>
+        <Item current={pathname === "/"}>
+          <SLink to="/">Home</SLink>
+        </Item>
+        {user.userData && !user.userData.isAuth ? (
+          <>
+            <Item current={pathname === "/login"}>
+              <SLink to="/login">Login</SLink>
+            </Item>
+            <Item current={pathname === "/register"}>
+              <SLink to="/register">Register</SLink>
+            </Item>
+          </>
+        ) : (
+          <Item>
+            <button onClick={logoutHandler}>로그아웃</button>
+          </Item>
+        )}
+      </List>
+    </Nav>
+  );
+}
+
+export default withRouter(Navbar);
