@@ -5,6 +5,7 @@ import Navbar from "./components/views/Navbar/Navbar";
 import LandingPage from "./components/views/LandingPage/LandingPage";
 import LoginPage from "./components/views/LoginPage/LoginPage";
 import RegisterPage from "./components/views/RegisterPage/RegisterPage";
+import BoardWritePage from "./components/views/BoardWritePage/BoardWritePage";
 import Auth from "./hoc/Auth";
 
 function App() {
@@ -16,6 +17,11 @@ function App() {
           <Route exact path="/" component={Auth(LandingPage, null)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
+          <Route
+            exact
+            path="/board/write"
+            component={Auth(BoardWritePage, true)}
+          />
         </Switch>
       </Router>
       <GlobalStyles />
