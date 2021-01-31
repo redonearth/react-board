@@ -1,21 +1,18 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
+import styled from "styled-components";
 
-const style = {
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  flexDirection: "column",
-  width: "100%",
-  height: "100vh"
-};
+const SLayout = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+`;
 
 function LandingPage(props) {
-  useEffect(() => {
-    axios.get("/api/hello").then((res) => console.log(res.data));
-  }, []);
-
   const onLogoutClickHandler = () => {
     axios.get("/api/users/logout").then((response) => {
       if (response.data.success) {
@@ -27,12 +24,10 @@ function LandingPage(props) {
   };
 
   return (
-    <>
-      <div style={style}>
-        <h2>시작 페이지</h2>
-        <button onClick={onLogoutClickHandler}>로그아웃</button>
-      </div>
-    </>
+    <SLayout>
+      <h2>시작 페이지</h2>
+      <button onClick={onLogoutClickHandler}>로그아웃</button>
+    </SLayout>
   );
 }
 

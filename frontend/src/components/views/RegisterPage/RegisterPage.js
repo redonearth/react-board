@@ -2,19 +2,21 @@ import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../../../_actions/user_action";
+import styled from "styled-components";
 
-const style = {
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  width: "100%",
-  height: "100vh"
-};
+const SLayout = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+`;
 
-const formStyle = {
-  display: "flex",
-  flexDirection: "column"
-};
+const SForm = styled.form`
+  display: flex;
+  flex-direction: column;
+`;
 
 function RegisterPage(props) {
   const dispatch = useDispatch();
@@ -58,8 +60,8 @@ function RegisterPage(props) {
   };
 
   return (
-    <div style={style}>
-      <form style={formStyle} onSubmit={onSubmitHandler}>
+    <SLayout>
+      <SForm onSubmit={onSubmitHandler}>
         <label>E-mail</label>
         <input type="email" value={Email} onChange={onEmailChangeHandler} />
         <label>Name</label>
@@ -77,8 +79,8 @@ function RegisterPage(props) {
           onChange={onConfirmPasswordChangeHandler}
         />
         <button>Register</button>
-      </form>
-    </div>
+      </SForm>
+    </SLayout>
   );
 }
 
