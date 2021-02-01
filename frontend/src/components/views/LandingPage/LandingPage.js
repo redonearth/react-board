@@ -14,6 +14,8 @@ const SLayout = styled.div`
 `;
 
 function LandingPage() {
+  const [PostCard, setPostCard] = useState([]);
+
   useEffect(() => {
     axios.get("/api/posts/list").then((response) => {
       if (response.data.success) {
@@ -24,8 +26,6 @@ function LandingPage() {
       }
     });
   }, []);
-
-  const [PostCard, setPostCard] = useState([]);
 
   return (
     <SLayout>
