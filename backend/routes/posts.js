@@ -24,4 +24,15 @@ router.get("/list", (req, res) => {
     });
 });
 
+router.post("/detail", (req, res) => {
+  Post.findOne({ _id: req.body.postId })
+    .populate("writer")
+    .exec((err, post) => {
+      if (err) {
+        return res.send(err);
+      }
+      res.status(200).json({ success: true, post });
+    });
+});
+
 module.exports = router;
