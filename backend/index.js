@@ -26,6 +26,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.use("/api/users", require("./routes/users"));
+app.use("/api/posts", require("./routes/posts"));
 
 app.get("/", (req, res) => res.send("Hello Express!"));
 

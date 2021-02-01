@@ -5,7 +5,7 @@ import Navbar from "./components/views/Navbar/Navbar";
 import LandingPage from "./components/views/LandingPage/LandingPage";
 import LoginPage from "./components/views/LoginPage/LoginPage";
 import RegisterPage from "./components/views/RegisterPage/RegisterPage";
-import BoardWritePage from "./components/views/BoardWritePage/BoardWritePage";
+import PostWritePage from "./components/views/PostWritePage/PostWritePage";
 import Auth from "./hoc/Auth";
 
 function App() {
@@ -19,8 +19,8 @@ function App() {
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route
             exact
-            path="/board/write"
-            component={Auth(BoardWritePage, true)}
+            path="/post/write"
+            component={Auth(PostWritePage, true)}
           />
         </Switch>
       </Router>
