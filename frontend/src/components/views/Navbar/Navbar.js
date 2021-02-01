@@ -75,14 +75,17 @@ function Navbar({ location: { pathname } }) {
         {user.userData && !user.userData.isAuth ? (
           <>
             <Item current={pathname === "/login"}>
-              <SLink to="/login">Login</SLink>
+              <SLink to="/login">로그인</SLink>
             </Item>
             <Item current={pathname === "/register"}>
-              <SLink to="/register">Register</SLink>
+              <SLink to="/register">회원가입</SLink>
             </Item>
           </>
         ) : (
           <>
+            <Item current={pathname === "/posts/write"}>
+              <SLink to="/posts/write">포스트</SLink>
+            </Item>
             <Item>
               <LogoutButton onClick={logoutHandler}>로그아웃</LogoutButton>
             </Item>

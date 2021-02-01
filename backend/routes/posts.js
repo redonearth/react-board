@@ -13,4 +13,15 @@ router.post("/write", (req, res) => {
   });
 });
 
+router.get("/list", (req, res) => {
+  Post.find()
+    .populate("writer")
+    .exec((err, posts) => {
+      if (err) {
+        return res.send(err);
+      }
+      res.status(200).json({ success: true, posts });
+    });
+});
+
 module.exports = router;

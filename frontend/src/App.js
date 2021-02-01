@@ -19,7 +19,7 @@ function App() {
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route
             exact
-            path="/post/write"
+            path="/posts/write"
             component={Auth(PostWritePage, true)}
           />
         </Switch>
