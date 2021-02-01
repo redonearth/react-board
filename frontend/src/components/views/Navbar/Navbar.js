@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, withRouter } from "react-router-dom";
+import { useHistory, Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { USER_SERVER } from "../../../Config";
@@ -39,14 +39,27 @@ const SLink = styled(Link)`
   justify-content: center;
 `;
 
-function Navbar({ props, location: { pathname } }) {
+const LogoutButton = styled.button`
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+`;
+
+function Navbar({ location: { pathname } }) {
+  const history = useHistory();
   const user = useSelector((state) => state.user);
 
-  const logoutHandler = () => {
+  const logoutHandler = async () => {
     try {
-      const response = axios.get(`${USER_SERVER}/logout`);
+      const response = await axios.get(`${USER_SERVER}/logout`);
       if (response.data.success) {
-        props.history.push("/login");
+        history.push("/login");
       }
     } catch {
       alert("로그아웃 에러가 발생했습니다.");
@@ -69,9 +82,11 @@ function Navbar({ props, location: { pathname } }) {
             </Item>
           </>
         ) : (
-          <Item>
-            <button onClick={logoutHandler}>로그아웃</button>
-          </Item>
+          <>
+            <Item>
+              <LogoutButton onClick={logoutHandler}>로그아웃</LogoutButton>
+            </Item>
+          </>
         )}
       </List>
     </Nav>

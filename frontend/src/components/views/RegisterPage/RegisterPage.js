@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { withRouter } from "react-router-dom";
+import { useHistory, withRouter } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../../../_actions/user_action";
 import styled from "styled-components";
@@ -18,7 +18,8 @@ const SForm = styled.form`
   flex-direction: column;
 `;
 
-function RegisterPage(props) {
+function RegisterPage() {
+  const history = useHistory();
   const dispatch = useDispatch();
   const [Email, setEmail] = useState("");
   const [Name, setName] = useState("");
@@ -52,7 +53,7 @@ function RegisterPage(props) {
 
     dispatch(registerUser(loginForm)).then((response) => {
       if (response.payload.success) {
-        props.history.push("/login");
+        history.push("/login");
       } else {
         alert("Failed to sign up.");
       }
