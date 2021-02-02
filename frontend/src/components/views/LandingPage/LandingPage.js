@@ -14,22 +14,34 @@ const SLayout = styled.div`
 `;
 
 function LandingPage() {
-  const [PostCard, setPostCard] = useState([]);
+  const [posts, setPosts] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get("/api/posts/list").then((response) => {
-      if (response.data.success) {
-        console.log(response.data);
-        setPostCard(response.data.posts);
-      } else {
-        alert("포스팅을 가져오는 중 에러가 발생했습니다.");
+    const fetchPosts = async () => {
+      try {
+        setError(null);
+        setPosts(null);
+        setLoading(true);
+
+        const response = await axios.get("/api/posts/list");
+        setPosts(response.data.posts);
+      } catch (e) {
+        setError(e);
       }
-    });
+      setLoading(false);
+    };
+    fetchPosts();
   }, []);
+
+  if (loading) return <div>로딩 중...</div>;
+  if (error) return <div>에러가 발생했습니다!</div>;
+  if (!posts) return null;
 
   return (
     <SLayout>
-      {PostCard.map((post) => (
+      {posts.map((post) => (
         <Post
           key={post._id}
           id={post._id}

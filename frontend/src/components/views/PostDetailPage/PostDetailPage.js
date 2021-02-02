@@ -1,27 +1,63 @@
 import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
+import styled from "styled-components";
 
-function PostDetailPage(props, { id, writer, title, content }) {
-  const [PostDetail, setPostDetail] = useState([]);
-  const {
-    match: {
-      params: { postId }
-    }
-  } = props;
+const Container = styled.div`
+  font-size: 12px;
+`;
+
+const Title = styled.span`
+  display: block;
+  margin-bottom: 4px;
+`;
+
+const Writer = styled.span`
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.4);
+`;
+
+const Content = styled.div``;
+
+function PostDetailPage({ match }) {
+  const [postDetail, setPostDetail] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const { postId } = match.params;
 
   useEffect(() => {
-    axios.post("/api/posts/detail", postId).then((response) => {
-      if (response.data.success) {
-        console.log(response.data);
+    const fetchPostDetail = async () => {
+      try {
+        setError(null);
+        setPostDetail(null);
+        setLoading(true);
+
+        const response = await axios.get("/api/posts/detail", {
+          params: { postId }
+        });
         setPostDetail(response.data.post);
-      } else {
-        alert("포스트를 불러오는 중 에러가 발생했습니다.");
+      } catch (e) {
+        setError(e);
       }
-    });
+      setLoading(false);
+    };
+    fetchPostDetail();
   }, []);
 
-  return <>{writer ? <div>{writer.name}</div> : <div></div>}</>;
+  if (loading) return <div>로딩 중...</div>;
+  if (error) return <div>에러가 발생했습니다!</div>;
+  if (!postDetail) return null;
+
+  const { title, writer, content } = postDetail;
+
+  return (
+    <Container>
+      <Title>{title}</Title>
+      <Writer>{writer.name}</Writer>
+      <Content>{content}</Content>
+    </Container>
+  );
 }
 
 export default withRouter(PostDetailPage);
