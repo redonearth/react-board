@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import GlobalStyles from "./components/GlobalStyles";
 import Navbar from "./components/views/Navbar/Navbar";
+import Footer from "./components/views/Footer/Footer";
 import LandingPage from "./components/views/LandingPage/LandingPage";
 import LoginPage from "./components/views/LoginPage/LoginPage";
 import RegisterPage from "./components/views/RegisterPage/RegisterPage";
@@ -35,6 +36,7 @@ function App() {
           />
           <Redirect from="*" to="/" />
         </Switch>
+        <Footer />
       </Router>
       <GlobalStyles />
     </>
