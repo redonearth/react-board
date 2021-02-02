@@ -70,7 +70,7 @@ function Navbar({ location: { pathname } }) {
     <Nav>
       <List>
         <Item current={pathname === "/"}>
-          <SLink to="/">Home</SLink>
+          <SLink to="/">포스트</SLink>
         </Item>
         {user.userData && !user.userData.isAuth ? (
           <>
@@ -84,7 +84,7 @@ function Navbar({ location: { pathname } }) {
         ) : (
           <>
             <Item current={pathname === "/posts/write"}>
-              <SLink to="/posts/write">포스트</SLink>
+              <SLink to="/posts/write">작성</SLink>
             </Item>
             <Item>
               <LogoutButton onClick={logoutHandler}>로그아웃</LogoutButton>
