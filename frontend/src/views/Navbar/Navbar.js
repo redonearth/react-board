@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory, Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
-import { USER_SERVER } from "../../../Config";
+import { USER_SERVER } from "../../Config";
 import axios from "axios";
 
 const Nav = styled.nav`
@@ -55,7 +55,7 @@ function Navbar({ location: { pathname } }) {
   const history = useHistory();
   const user = useSelector((state) => state.user);
 
-  const logoutHandler = async () => {
+  const onLogout = async () => {
     try {
       const response = await axios.get(`${USER_SERVER}/logout`);
       if (response.data.success) {
@@ -87,7 +87,7 @@ function Navbar({ location: { pathname } }) {
               <SLink to="/posts/write">작성</SLink>
             </Item>
             <Item>
-              <LogoutButton onClick={logoutHandler}>로그아웃</LogoutButton>
+              <LogoutButton onClick={onLogout}>로그아웃</LogoutButton>
             </Item>
           </>
         )}

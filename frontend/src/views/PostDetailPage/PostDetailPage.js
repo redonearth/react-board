@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
-import axios from "axios";
 import styled from "styled-components";
+import axios from "axios";
+import { POST_SERVER } from "../../Config";
 
 const Container = styled.div`
   font-size: 12px;
@@ -33,7 +34,7 @@ function PostDetailPage({ match }) {
         setPostDetail(null);
         setLoading(true);
 
-        const response = await axios.get("/api/posts/detail", {
+        const response = await axios.get(`${POST_SERVER}/detail`, {
           params: { postId }
         });
         setPostDetail(response.data.post);

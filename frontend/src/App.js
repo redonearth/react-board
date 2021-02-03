@@ -5,14 +5,14 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
-import GlobalStyles from "./components/GlobalStyles";
-import Navbar from "./components/views/Navbar/Navbar";
-import Footer from "./components/views/Footer/Footer";
-import LandingPage from "./components/views/LandingPage/LandingPage";
-import LoginPage from "./components/views/LoginPage/LoginPage";
-import RegisterPage from "./components/views/RegisterPage/RegisterPage";
-import PostWritePage from "./components/views/PostWritePage/PostWritePage";
-import PostDetailPage from "./components/views/PostDetailPage/PostDetailPage";
+import GlobalStyles from "./GlobalStyles";
+import Navbar from "./views/Navbar/Navbar";
+import Footer from "./views/Footer/Footer";
+import LandingPage from "./views/LandingPage/LandingPage";
+import LoginPage from "./views/LoginPage/LoginPage";
+import RegisterPage from "./views/RegisterPage/RegisterPage";
+import PostWritePage from "./views/PostWritePage/PostWritePage";
+import PostDetailPage from "./views/PostDetailPage/PostDetailPage";
 import Auth from "./hoc/Auth";
 
 function App() {

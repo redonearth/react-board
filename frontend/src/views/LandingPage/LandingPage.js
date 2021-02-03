@@ -1,10 +1,11 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
 import styled from "styled-components";
-import Post from "../../Post";
+import Post from "../../components/Post";
+import axios from "axios";
+import { POST_SERVER } from "../../Config";
 
-const SLayout = styled.div`
+const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,7 +26,7 @@ function LandingPage() {
         setPosts(null);
         setLoading(true);
 
-        const response = await axios.get("/api/posts/list");
+        const response = await axios.get(`${POST_SERVER}/list`);
         setPosts(response.data.posts);
       } catch (e) {
         setError(e);
@@ -40,7 +41,7 @@ function LandingPage() {
   if (!posts) return null;
 
   return (
-    <SLayout>
+    <Container>
       {posts.map((post) => (
         <Post
           key={post._id}
@@ -50,7 +51,7 @@ function LandingPage() {
           content={post.content}
         />
       ))}
-    </SLayout>
+    </Container>
   );
 }
 

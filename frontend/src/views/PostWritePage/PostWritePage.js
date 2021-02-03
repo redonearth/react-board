@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import PostWriteActionButtons from "./PostWriteActionButtons";
 import styled from "styled-components";
 import axios from "axios";
-import { POST_SERVER } from "../../../Config";
+import { POST_SERVER } from "../../Config";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
