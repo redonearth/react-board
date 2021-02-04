@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
 import { POST_SERVER } from "../../Config";
+import parse from "html-react-parser";
 
 const Container = styled.div`
   font-size: 12px;
@@ -44,7 +45,7 @@ function PostDetailPage({ match }) {
       setLoading(false);
     };
     fetchPostDetail();
-  }, []);
+  }, [postId]);
 
   if (loading) return <div>로딩 중...</div>;
   if (error) return <div>에러가 발생했습니다!</div>;
@@ -54,9 +55,9 @@ function PostDetailPage({ match }) {
 
   return (
     <Container>
-      <Title>{title}</Title>
-      <Writer>{writer.name}</Writer>
-      <Content>{content}</Content>
+      <Title>{parse(title)}</Title>
+      <Writer>{parse(writer.name)}</Writer>
+      <Content>{parse(content)}</Content>
     </Container>
   );
 }

@@ -6,14 +6,12 @@ import {
   Redirect
 } from "react-router-dom";
 import GlobalStyles from "./GlobalStyles";
-import Navbar from "./views/Navbar/Navbar";
-import Footer from "./views/Footer/Footer";
-import LandingPage from "./views/LandingPage/LandingPage";
-import LoginPage from "./views/LoginPage/LoginPage";
-import RegisterPage from "./views/RegisterPage/RegisterPage";
-import PostWritePage from "./views/PostWritePage/PostWritePage";
-import PostDetailPage from "./views/PostDetailPage/PostDetailPage";
-import Auth from "./hoc/Auth";
+import Navbar from "./pages/Navbar/Navbar";
+import LandingPage from "./pages/LandingPage/LandingPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import PostWritePage from "./pages/PostWritePage/PostWritePage";
+import PostDetailPage from "./pages/PostDetailPage/PostDetailPage";
 
 function App() {
   return (
@@ -21,22 +19,13 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
-          <Route exact path="/" component={Auth(LandingPage, null)} />
-          <Route exact path="/login" component={Auth(LoginPage, false)} />
-          <Route exact path="/register" component={Auth(RegisterPage, false)} />
-          <Route
-            exact
-            path="/posts/write"
-            component={Auth(PostWritePage, true)}
-          />
-          <Route
-            exact
-            path="/posts/:postId"
-            component={Auth(PostDetailPage, null)}
-          />
+          <Route component={LandingPage} path={["/@:username", "/"]} exact />
+          <Route component={LoginPage} path="/login" />
+          <Route component={RegisterPage} path="/register" />
+          <Route component={PostWritePage} path="/write" />
+          <Route component={PostDetailPage} path="/@:username/:postId" />
           <Redirect from="*" to="/" />
         </Switch>
-        <Footer />
       </Router>
       <GlobalStyles />
     </>
