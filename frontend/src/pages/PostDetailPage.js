@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
-import { POST_SERVER } from "../../Config";
+import { POST_SERVER } from "../Config";
 import parse from "html-react-parser";
 
 const Container = styled.div`

@@ -2,7 +2,6 @@ import React from "react";
 import { useHistory, Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
-import { USER_SERVER } from "../../Config";
 import axios from "axios";
 
 const Nav = styled.nav`
@@ -57,10 +56,10 @@ function Navbar({ location: { pathname } }) {
 
   const onLogout = async () => {
     try {
-      const response = await axios.get(`${USER_SERVER}/logout`);
-      if (response.data.success) {
-        history.push("/login");
-      }
+      // const response = await axios.get(`${USER_SERVER}/logout`);
+      // if (response.data.success) {
+      history.push("/login");
+      // }
     } catch {
       alert("로그아웃 에러가 발생했습니다.");
     }
@@ -83,8 +82,8 @@ function Navbar({ location: { pathname } }) {
           </>
         ) : (
           <>
-            <Item current={pathname === "/posts/write"}>
-              <SLink to="/posts/write">작성</SLink>
+            <Item current={pathname === "/write"}>
+              <SLink to="/write">작성</SLink>
             </Item>
             <Item>
               <LogoutButton onClick={onLogout}>로그아웃</LogoutButton>

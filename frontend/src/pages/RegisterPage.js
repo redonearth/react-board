@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory, withRouter } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { registerUser } from "../../_actions/user_action";
+import { registerUser } from "../_actions/user_action";
 import styled from "styled-components";
 
 const Container = styled.div`
