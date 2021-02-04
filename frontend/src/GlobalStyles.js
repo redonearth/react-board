@@ -3,19 +3,29 @@ import reset from "styled-reset";
 
 const globalStyles = createGlobalStyle`
   ${reset};
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-  * {
-    box-sizing: border-box;
-  }
+  
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 14px;
-    background-color: white;
-    color: #0e0e0e;
+    box-sizing: border-box;
+    min-height: 100%;
     padding-top: 50px;
+  }
+
+  #root {
+    min-height: 100%;
+  }
+
+  html {
+    height: 100%;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  * {
+   box-sizing: inherit;
   }
 `;
 
