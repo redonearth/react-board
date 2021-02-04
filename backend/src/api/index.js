@@ -1,6 +1,6 @@
 import Router from "koa-router";
-import users from "./users/index";
-import posts from "./posts/index";
+import users from "./users";
+import posts from "./posts";
 
 const api = new Router();
 

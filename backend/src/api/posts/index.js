@@ -9,9 +9,9 @@ posts.post("/", checkLoggedIn, postsCtrl.write);
 
 const post = new Router();
 post.get("/", postsCtrl.read);
-post.delete("/", checkLoggedIn, postsCtrl.remove);
-post.patch("/", checkLoggedIn, postsCtrl.update);
+post.delete("/", checkLoggedIn, postsCtrl.checkOwnPost, postsCtrl.remove);
+post.patch("/", checkLoggedIn, postsCtrl.checkOwnPost, postsCtrl.update);
 
-post.use("/:id", postsCtrl.checkObjectId, post.routes());
+post.use("/:id", postsCtrl.getPostById, post.routes());
 
 export default posts;
