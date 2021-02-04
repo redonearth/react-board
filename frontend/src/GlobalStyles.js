@@ -8,7 +8,6 @@ const globalStyles = createGlobalStyle`
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     box-sizing: border-box;
     min-height: 100%;
-    padding-top: 50px;
   }
 
   #root {

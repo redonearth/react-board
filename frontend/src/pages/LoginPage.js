@@ -3,6 +3,8 @@ import { useHistory, withRouter } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../_actions/user_action";
 import styled from "styled-components";
+import AuthTemplate from "../components/auth/AuthTemplate";
+import AuthForm from "../components/auth/AuthForm";
 
 const Container = styled.div`
   display: flex;
@@ -48,13 +50,16 @@ function LoginPage() {
 
   return (
     <Container>
-      <Form onSubmit={onSubmit}>
+      <AuthTemplate>
+        <AuthForm />
+      </AuthTemplate>
+      {/* <Form onSubmit={onSubmit}>
         <label>E-mail</label>
         <input type="email" value={Email} onChange={onEmailChange} />
         <label>Password</label>
         <input type="password" value={Password} onChange={onPasswordChange} />
         <button>Login</button>
-      </Form>
+      </Form> */}
     </Container>
   );
 }

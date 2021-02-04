@@ -3,6 +3,8 @@ import { useHistory, withRouter } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../_actions/user_action";
 import styled from "styled-components";
+import AuthTemplate from "../components/auth/AuthTemplate";
+import AuthForm from "../components/auth/AuthForm";
 
 const Container = styled.div`
   display: flex;
@@ -63,7 +65,10 @@ function RegisterPage() {
 
   return (
     <Container>
-      <Form onSubmit={onSubmit}>
+      <AuthTemplate>
+        <AuthForm />
+      </AuthTemplate>
+      {/* <Form onSubmit={onSubmit}>
         <label>E-mail</label>
         <input type="email" value={email} onChange={onEmailChange} />
         <label>Name</label>
@@ -77,7 +82,7 @@ function RegisterPage() {
           onChange={onConfirmPasswordChange}
         />
         <button>Register</button>
-      </Form>
+      </Form> */}
     </Container>
   );
 }

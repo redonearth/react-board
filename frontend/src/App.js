@@ -24,7 +24,7 @@ function App() {
         <Route component={RegisterPage} path="/register" />
         <Route component={PostWritePage} path="/write" />
         <Route component={PostDetailPage} path="/@:username/:postId" />
-        <Redirect from="*" to="/" />
+        {/* <Redirect from="*" to="/" /> */}
         {/* </Switch> */}
       </Router>
       <GlobalStyles />

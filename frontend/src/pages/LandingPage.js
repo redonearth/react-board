@@ -43,7 +43,7 @@ function LandingPage() {
   return (
     // <Container>
     <div>
-      <Button>벝은</Button>
+      <Button>버튼</Button>
       {/* {posts.map((post) => (
         <Post
           key={post._id}
