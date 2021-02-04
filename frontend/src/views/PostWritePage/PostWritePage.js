@@ -34,12 +34,6 @@ function BoardWritePage() {
   const onPublish = (e) => {
     e.preventDefault();
 
-    const params = {
-      writer: user.userData._id,
-      title,
-      content
-    };
-
     if (title.length < 2 || content.length === 0) {
       if (title.length < 2) {
         alert("제목을 최소 2글자 이상 입력해주세요.");
@@ -49,6 +43,12 @@ function BoardWritePage() {
         return;
       }
     }
+
+    const params = {
+      writer: user.userData._id,
+      title,
+      content
+    };
 
     const publishPost = async () => {
       try {
@@ -74,15 +74,15 @@ function BoardWritePage() {
       <form onSubmit={onPublish}>
         <label>글 제목</label>
         <input
+          placeholder="제목을 입력하세요."
           value={title}
           onChange={onTitleChange}
-          placeholder="제목을 입력하세요."
         />
         <ReactQuill
-          theme={"snow"}
+          theme="snow"
+          placeholder="포스팅을 작성하세요."
           value={content}
           onChange={setContent}
-          placeholder="포스팅을 작성하세요."
         />
       </form>
       <PostWriteActionButtons onPublish={onPublish} onCancel={onCancel} />
