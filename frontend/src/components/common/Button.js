@@ -5,13 +5,14 @@ import palette from "../../lib/styles/palette";
 const StyledButton = styled.button`
   outline: none;
   border: none;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   font-size: 1rem;
   font-weight: bold;
   padding: 0.25rem 1rem;
   color: white;
   cursor: pointer;
   background: ${palette.gray[8]};
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   &:hover {
     background: ${palette.gray[6]};
   }
@@ -27,9 +28,9 @@ const StyledButton = styled.button`
   ${(props) =>
     props.indigo &&
     css`
-      background: ${palette.indigo[8]};
+      background: ${palette.indigo[6]};
       &:hover {
-        background: ${palette.indigo[6]};
+        background: ${palette.indigo[4]};
       }
     `}
 `;

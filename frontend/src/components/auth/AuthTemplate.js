@@ -13,23 +13,24 @@ const AuthTemplateWrapper = styled.div`
   top: 0;
   bottom: 0;
   right: 0;
-  background: ${palette.indigo[4]};
+  background: ${palette.gray[4]};
+`;
+
+const Logo = styled.div`
+  display: block;
+  color: ${palette.indigo[6]};
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  padding-bottom: 1.5rem;
 `;
 
 const StyledBox = styled.div`
-  .logo-area {
-    display: block;
-    color: ${palette.indigo[6]};
-    text-align: center;
-    font-size: 1.5rem;
-    font-weight: 800;
-    letter-spacing: -0.5px;
-    padding-bottom: 3.5rem;
-  }
   background: ${palette.gray[0]};
   border-radius: 12px;
   width: 580px;
-  padding: 2.75rem 4.25rem;
+  padding: 4rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   &:hover {
@@ -40,12 +41,10 @@ const StyledBox = styled.div`
 const AuthTemplate = ({ children }) => {
   return (
     <AuthTemplateWrapper>
-      <StyledBox>
-        <div className="logo-area">
-          <Link to="/">React Board</Link>
-        </div>
-        {children}
-      </StyledBox>
+      <Logo>
+        <Link to="/">React Board</Link>
+      </Logo>
+      <StyledBox>{children}</StyledBox>
     </AuthTemplateWrapper>
   );
 };

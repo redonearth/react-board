@@ -4,7 +4,15 @@ import styled from "styled-components";
 import palette from "../../lib/styles/palette";
 import Button from "../common/Button";
 
-const AuthFormWrapper = styled.div``;
+const AuthFormWrapper = styled.div`
+  h1 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: ${palette.gray[6]};
+    margin-bottom: 3rem;
+  }
+`;
 
 const StyledInput = styled.input`
   border: none;
@@ -31,18 +39,26 @@ const Footer = styled.div`
   margin-top: 1.5rem;
   text-align: right;
   a {
-    color: ${palette.indigo[8]};
+    color: ${palette.indigo[6]};
     font-size: 1.125rem;
     font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     &:hover {
       color: ${palette.indigo[4]};
     }
   }
 `;
 
-const AuthForm = () => {
+const textMap = {
+  login: "로그인",
+  register: "회원가입"
+};
+
+const AuthForm = ({ type }) => {
+  const text = textMap[type];
   return (
     <AuthFormWrapper>
+      <h1>{text}</h1>
       <form>
         <StyledInput autoComplete="email" name="email" placeholder="이메일" />
         <StyledInput
@@ -52,11 +68,15 @@ const AuthForm = () => {
           type="password"
         />
         <ButtonWithMarginTop fullWidth indigo>
-          로그인
+          {text}
         </ButtonWithMarginTop>
       </form>
       <Footer>
-        <Link to="/register">회원가입</Link>
+        {type === "login" ? (
+          <Link to="/register">회원가입</Link>
+        ) : (
+          <Link to="/login">로그인</Link>
+        )}
       </Footer>
     </AuthFormWrapper>
   );

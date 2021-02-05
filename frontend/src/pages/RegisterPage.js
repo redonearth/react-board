@@ -66,7 +66,7 @@ function RegisterPage() {
   return (
     <Container>
       <AuthTemplate>
-        <AuthForm />
+        <AuthForm type="register" />
       </AuthTemplate>
       {/* <Form onSubmit={onSubmit}>
         <label>E-mail</label>

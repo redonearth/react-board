@@ -51,7 +51,7 @@ function LoginPage() {
   return (
     <Container>
       <AuthTemplate>
-        <AuthForm />
+        <AuthForm type="login" />
       </AuthTemplate>
       {/* <Form onSubmit={onSubmit}>
         <label>E-mail</label>
