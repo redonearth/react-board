@@ -1,9 +1,11 @@
 import React from "react";
-import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
+import palette from "../../lib/styles/palette";
+import { Link, withRouter } from "react-router-dom";
+import Responsive from "../common/Responsive";
 
-const Container = styled.div`
-  font-size: 12px;
+const PostViewerWrapper = styled(Responsive)`
+  margin-top: 4rem;
 `;
 
 const Title = styled.span`
@@ -20,11 +22,9 @@ const Content = styled.div``;
 
 const Post = ({ id, writer, title, content }) => (
   <Link to={`/posts/${id}`}>
-    <Container>
-      <Title>{title}</Title>
-      <Writer>{writer}</Writer>
-      <Content>{content}</Content>
-    </Container>
+    <Title>{title}</Title>
+    <Writer>{writer}</Writer>
+    <Content>{content}</Content>
   </Link>
 );
 

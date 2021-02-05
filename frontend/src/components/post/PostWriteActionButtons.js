@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Button from "../common/Button";
 
 const WriteActionButtonsBlock = styled.div`
   margin-top: 1rem;
@@ -9,7 +10,7 @@ const WriteActionButtonsBlock = styled.div`
   }
 `;
 
-const StyledButton = styled.button`
+const StyledButton = styled(Button)`
   height: 2.125rem;
   & + & {
     margin-left: 0.5rem;

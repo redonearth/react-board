@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
 import { POST_SERVER } from "../Config";
-import parse from "html-react-parser";
+import PostViewerContainer from "../components/post/PostViewerContainer";
 
 const Container = styled.div`
   font-size: 12px;
@@ -54,12 +53,10 @@ function PostDetailPage({ match }) {
   const { title, writer, content } = postDetail;
 
   return (
-    <Container>
-      <Title>{parse(title)}</Title>
-      <Writer>{parse(writer.name)}</Writer>
-      <Content>{parse(content)}</Content>
-    </Container>
+    <>
+      <PostViewerContainer />
+    </>
   );
 }
 
-export default withRouter(PostDetailPage);
+export default PostDetailPage;
