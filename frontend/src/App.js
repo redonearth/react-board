@@ -6,7 +6,6 @@ import {
   Redirect
 } from "react-router-dom";
 import GlobalStyles from "./GlobalStyles";
-import Navbar from "./pages/Navbar";
 import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
@@ -17,8 +16,7 @@ function App() {
   return (
     <>
       <Router>
-        {/* <Navbar />
-        <Switch> */}
+        {/* <Switch> */}
         <Route component={LandingPage} path={["/@:username", "/"]} exact />
         <Route component={LoginPage} path="/login" />
         <Route component={RegisterPage} path="/register" />
