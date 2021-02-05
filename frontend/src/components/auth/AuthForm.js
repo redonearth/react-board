@@ -54,18 +54,26 @@ const textMap = {
   register: "회원가입"
 };
 
-const AuthForm = ({ type }) => {
+const AuthForm = ({ type, form, onChange, onSubmit }) => {
   const text = textMap[type];
   return (
     <AuthFormWrapper>
       <h1>{text}</h1>
-      <form>
-        <StyledInput autoComplete="email" name="email" placeholder="이메일" />
+      <form onSubmit={onSubmit}>
+        <StyledInput
+          autoComplete="email"
+          name="email"
+          placeholder="이메일"
+          onChange={onChange}
+          value={form.email}
+        />
         <StyledInput
           autoComplete="new-password"
           name="password"
           placeholder="비밀번호"
           type="password"
+          onChange={onChange}
+          value={form.password}
         />
         <ButtonWithMarginTop fullWidth indigo>
           {text}
