@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeField, initializeForm } from "../../modules/auth";
 import AuthForm from "../../components/auth/AuthForm";
+import { withRouter } from "react-router-dom";
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,11 @@ const RegisterForm = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
+    const { email, password, passwordConfirm } = form;
+    if (password !== passwordConfirm) {
+      return;
+    }
+    // dispatch()
     // let loginForm = {
     //   email: Email,
     //   password: Password
@@ -41,4 +47,4 @@ const RegisterForm = () => {
   );
 };
 
-export default RegisterForm;
+export default withRouter(RegisterForm);
