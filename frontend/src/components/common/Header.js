@@ -3,17 +3,20 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import palette from "../../lib/styles/palette";
 import Button from "./Button";
+import Responsive from "./Responsive";
 
 const HeaderWrapper = styled.div`
   position: fixed;
   width: 100%;
+  background: ${palette.indigo[4]};
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
+`;
+
+const Wrapper = styled(Responsive)`
   height: 4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 2rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
-  background: ${palette.indigo[4]};
   color: white;
   .logo {
     font-size: 1.25rem;
@@ -41,12 +44,14 @@ const Header = () => {
   return (
     <>
       <HeaderWrapper>
-        <Link to="/" className="logo">
-          React Board
-        </Link>
-        <div className="right">
-          <StyledButton to="/login">로그인</StyledButton>
-        </div>
+        <Wrapper>
+          <Link to="/" className="logo">
+            React Board
+          </Link>
+          <div className="right">
+            <StyledButton to="/login">로그인</StyledButton>
+          </div>
+        </Wrapper>
       </HeaderWrapper>
       <Spacer />
     </>
