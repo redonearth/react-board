@@ -13,10 +13,10 @@ export const auth = (ctx) => {
 export const register = async (ctx) => {
   const schema = Joi.object().keys({
     username: Joi.string().alphanum().min(3).max(20).required(),
-    email: Joi.string().alphanum().min(12).max(50).required(),
+    email: Joi.string().email().min(12).max(50).required(),
     password: Joi.string().required()
   });
-  const result = Joi.valid(ctx.request.body, schema);
+  const result = schema.validate(ctx.request.body);
   if (result.error) {
     ctx.status = 400;
     ctx.body = result.error;
