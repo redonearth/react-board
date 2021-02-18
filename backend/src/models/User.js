@@ -1,8 +1,6 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-
-const { Schema } = mongoose;
 
 const UserSchema = new Schema({
   username: String,
