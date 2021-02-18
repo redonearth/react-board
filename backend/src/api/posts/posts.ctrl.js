@@ -47,7 +47,7 @@ export const write = async (ctx) => {
   }
 
   const { title, content } = ctx.request.body;
-  const post = new Post({ title, content });
+  const post = new Post({ title, content, user: ctx.state.user });
   try {
     await post.save();
     ctx.body = post;
